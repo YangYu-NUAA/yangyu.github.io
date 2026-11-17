@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "note": "学术服务信息。完整期刊全称与角色补齐后再增补；不将审稿人身份写成编委。",
+  "memberships_zh": ["中国计算机学会（CCF）会员", "Datawhale 开源社区正式成员"],
+  "memberships_en": ["Member, China Computer Federation (CCF)", "Official member, Datawhale open-source community"],
+  "committee": [
+    {
+      "organization_zh": "CCF YOCSEF 合肥",
+      "organization_en": "CCF YOCSEF Hefei",
+      "role_zh": "委员",
+      "role_en": "Member"
+    }
+  ],
+  "workshops": [
+    {
+      "conference": "ICTEC 2026",
+      "role_zh": "Workshop 主席",
+      "role_en": "Workshop Chair",
+      "topic_zh": "智能交通系统中的时空与时序数据分析",
+      "topic_en": "Analysis of Spatio-temporal and Time Series Data in Intelligent Transportation Systems",
+      "url": null
+    },
+    {
+      "conference": "ICTEC 2027",
+      "role_zh": "Workshop 主席",
+      "role_en": "Workshop Chair",
+      "topic_zh": null,
+      "topic_en": null,
+      "url": null
+    }
+  ],
+  "journal_reviewer_zh": ["Pattern Recognition（模式识别）", "Expert Systems with Applications（专家系统及其应用）", "Knowledge-Based Systems（知识系统）"],
+  "journal_reviewer_en": ["Pattern Recognition", "Expert Systems with Applications", "Knowledge-Based Systems"],
+  "conference_reviewer_zh": ["AAAI", "KDD"],
+  "conference_reviewer_en": ["AAAI", "KDD"]
+}

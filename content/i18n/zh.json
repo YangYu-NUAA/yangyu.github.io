@@ -1,0 +1,76 @@
+{
+  "doc_title": "余洋 Yang Yu — 安徽理工大学 | 个人学术主页",
+  "meta_description": "余洋，安徽理工大学计算机科学与工程学院副教授、硕士生导师。研究方向：时间序列分析、时序基础模型、时序智能体与人工智能辅助药物设计。",
+  "eyebrow": "安徽理工大学 · 计算机科学与工程学院",
+  "role_line": "副教授 · 硕士生导师",
+  "tagline": "时间序列分析、时序基础模型、时序智能体与人工智能辅助药物设计。",
+  "lang_self_label": "中文",
+  "lang_other_label": "EN",
+  "lang_other_href": "en/",
+  "lang_other_hreflang": "en",
+  "lang_other_title": "切换到英文版",
+  "nav_aria": "页面目录",
+  "social_aria": "联系方式链接",
+  "nav": {
+    "about": "关于",
+    "news": "最新动态",
+    "research": "研究方向",
+    "publications": "论文发表",
+    "projects": "项目",
+    "experience": "经历",
+    "teaching": "教学与服务",
+    "contact": "招生与联系"
+  },
+  "sections": {
+    "about": "关于",
+    "news": "最新动态",
+    "research": "研究方向",
+    "publications": "论文发表",
+    "projects": "项目",
+    "experience": "经历",
+    "teaching": "教学与服务",
+    "contact": "招生与联系"
+  },
+  "about": {
+    "chips_label": "研究方向"
+  },
+  "publications": {
+    "paper_link": "论文",
+    "code_link": "代码",
+    "bibtex_link": "BibTeX",
+    "role_prefix": "",
+    "selected_note": "以下按发表年份倒序排列。"
+  },
+  "projects": {
+    "funded_title": "科研项目（主持）",
+    "participating_title": "参与项目",
+    "software_title": "研究软件与开源工具",
+    "number_label": "编号"
+  },
+  "experience": {
+    "present": "至今",
+    "current": "现任",
+    "advisor_label": "导师"
+  },
+  "teaching": {
+    "title": "教学",
+    "reform_title": "主持教改项目",
+    "open_source_title": "开源教育贡献",
+    "service_title": "学术服务",
+    "reviewer_journal": "期刊审稿",
+    "reviewer_conference": "会议审稿"
+  },
+  "contact": {
+    "recruitment_title": "招生与学生交流",
+    "collaboration_title": "科研合作",
+    "info_title": "联系方式",
+    "email_label": "邮箱",
+    "office_label": "办公室",
+    "address_label": "通信地址",
+    "github_label": "GitHub",
+    "college_label": "学院官网",
+    "college_page_label": "学院教师主页"
+  },
+  "footer": "© 2026 余洋 · 安徽理工大学计算机科学与工程学院 · 静态页面，无跟踪脚本",
+  "portrait_alt": "余洋"
+}

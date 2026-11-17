@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8eefb"/>
+      <stop offset="1" stop-color="#d7e3f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" fill="url(#bg)"/>
+  <circle cx="120" cy="120" r="112" fill="#ffffff" fill-opacity="0.55"/>
+  <text x="120" y="152" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif" font-size="128" font-weight="600" fill="#0b57d0" text-anchor="middle">余</text>
+</svg>

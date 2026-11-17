@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "note": "科研项目与软件分开维护。funded 为主持项目（个人主页展示）；participating 为参与项目（仅列前三项，其余待公开范围确认后再加）。教改项目放在 content/teaching.json。",
+  "funded": [
+    {
+      "title_zh": "面向时间序列预测的不规则模态补全、对齐和融合方法研究",
+      "title_en": "Irregular Modality Completion, Alignment, and Fusion for Time Series Forecasting",
+      "category_zh": "校级科研项目",
+      "category_en": "University-level Research Project",
+      "role_zh": "主持",
+      "role_en": "Principal Investigator"
+    },
+    {
+      "title_zh": "时序分析多智能体系统关键技术开发",
+      "title_en": "Key Technologies for Multi-Agent Time Series Analysis Systems",
+      "category_zh": "横向技术开发项目",
+      "category_en": "Industry-funded Technical Development Project",
+      "role_zh": "主持",
+      "role_en": "Principal Investigator"
+    }
+  ],
+  "participating": [
+    {
+      "title_zh": "中小河流洪水防控与应急管理关键技术研究与示范",
+      "title_en": "Key Technologies and Demonstration for Flood Prevention and Emergency Management of Small and Medium Rivers",
+      "category_zh": "国家重点研发计划（参与课题三与课题六）",
+      "category_en": "National Key R&D Program (participant)",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    },
+    {
+      "title_zh": "复杂空管运行场景下不确定时空知识表征与管理关键技术研究",
+      "title_en": "Key Technologies for Uncertainty-Aware Spatio-Temporal Knowledge Representation and Management in Complex Air Traffic Management Scenarios",
+      "category_zh": "国家自然科学基金面上项目",
+      "category_en": "NSFC General Program",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    },
+    {
+      "title_zh": "飞行区异构知识融合和图谱质量增强技术",
+      "title_en": "Heterogeneous Knowledge Fusion and Knowledge Graph Quality Enhancement for Airport Maneuvering Areas",
+      "category_zh": "国家重点实验室开放基金",
+      "category_en": "State Key Laboratory Open Fund",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    }
+  ],
+  "software": [
+    {
+      "title": "Universal-MMD-KL-JS-divergence",
+      "description_zh": "MMD、KL 和 JS 差异度量的实现工具。",
+      "description_en": "Implementations of the MMD, KL, and JS divergence measures.",
+      "url": "https://github.com/YangYu-NUAA/Universal-MMD-KL-JS-divergence"
+    }
+  ],
+  "software_note_zh": "DiffAT 与 Robformer 的公开实现见论文条目中的代码链接。",
+  "software_note_en": "Open implementations of DiffAT and Robformer are linked from their publication entries."
+}

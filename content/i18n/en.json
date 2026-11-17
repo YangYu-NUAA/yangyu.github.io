@@ -1,0 +1,76 @@
+{
+  "doc_title": "Yang Yu 余洋 — Anhui University of Science and Technology",
+  "meta_description": "Yang Yu, Associate Professor and Master's Supervisor at the School of Computer Science and Engineering, Anhui University of Science and Technology. Research: time series analysis, foundation models, collaborative agents, and AI-assisted drug discovery.",
+  "eyebrow": "Anhui University of Science and Technology · School of Computer Science and Engineering",
+  "role_line": "Associate Professor · Master's Supervisor",
+  "tagline": "Time series analysis, foundation models, collaborative agents, and AI-assisted drug discovery.",
+  "lang_self_label": "EN",
+  "lang_other_label": "中文",
+  "lang_other_href": "../",
+  "lang_other_hreflang": "zh-CN",
+  "lang_other_title": "Switch to Chinese",
+  "nav_aria": "Sections",
+  "social_aria": "Contact links",
+  "nav": {
+    "about": "About",
+    "news": "News",
+    "research": "Research",
+    "publications": "Publications",
+    "projects": "Projects",
+    "experience": "Experience",
+    "teaching": "Teaching & Service",
+    "contact": "Students & Contact"
+  },
+  "sections": {
+    "about": "About",
+    "news": "News",
+    "research": "Research",
+    "publications": "Publications",
+    "projects": "Projects",
+    "experience": "Experience",
+    "teaching": "Teaching & Service",
+    "contact": "Students & Contact"
+  },
+  "about": {
+    "chips_label": "Research interests"
+  },
+  "publications": {
+    "paper_link": "Paper",
+    "code_link": "Code",
+    "bibtex_link": "BibTeX",
+    "role_prefix": "",
+    "selected_note": "Listed in reverse chronological order."
+  },
+  "projects": {
+    "funded_title": "Research Projects (PI)",
+    "participating_title": "Participated Projects",
+    "software_title": "Research Software & Open Source",
+    "number_label": "No."
+  },
+  "experience": {
+    "present": "Present",
+    "current": "Current",
+    "advisor_label": "Advisor"
+  },
+  "teaching": {
+    "title": "Teaching",
+    "reform_title": "Teaching Reform Project (PI)",
+    "open_source_title": "Open-Source Education",
+    "service_title": "Academic Service",
+    "reviewer_journal": "Journal Reviewer",
+    "reviewer_conference": "Conference Reviewer"
+  },
+  "contact": {
+    "recruitment_title": "Prospective Students",
+    "collaboration_title": "Collaboration",
+    "info_title": "Contact",
+    "email_label": "Email",
+    "office_label": "Office",
+    "address_label": "Address",
+    "github_label": "GitHub",
+    "college_label": "College Website",
+    "college_page_label": "College Faculty Page"
+  },
+  "footer": "© 2026 Yang Yu · School of Computer Science and Engineering, Anhui University of Science and Technology · Static page, no tracking scripts",
+  "portrait_alt": "Yang Yu"
+}

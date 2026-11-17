@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{html_lang}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{doc_title}}</title>
+  <meta name="description" content="{{meta_description}}">
+  {{meta_tags}}
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>余</text></svg>">
+  <link rel="stylesheet" href="{{prefix}}styles.css">
+  <script>if ('IntersectionObserver' in window) { document.documentElement.classList.add('js'); }</script>
+</head>
+<body>
+  <div class="ascii-ocean" aria-hidden="true"><canvas id="asciiOcean"></canvas></div>
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <div class="layout">
+    <!-- ============ 左侧固定侧栏 ============ -->
+    <header class="sidebar">
+      <div class="sidebar-top">
+        <div class="eyebrow-row">
+          <p class="eyebrow mono">{{eyebrow}}</p>
+          <a class="lang-toggle" href="{{lang_other_href}}" hreflang="{{lang_other_hreflang}}" title="{{lang_other_title}}">
+            <span class="lang-self">{{lang_self_label}}</span><span class="lang-sep">/</span><span class="lang-other">{{lang_other_label}}</span>
+          </a>
+        </div>
+        <div class="identity">
+          <img class="avatar" src="{{portrait_src}}" alt="{{portrait_alt}}" width="112" height="112">
+          <div class="identity-text">
+            <h1 class="name">{{name_main}}</h1>
+            <p class="name-sub">{{name_sub}}</p>
+          </div>
+        </div>
+        <p class="role">{{role_line}}</p>
+        <p class="tagline">{{tagline}}</p>
+        <p class="sidebar-email mono"><a href="mailto:{{email}}">{{email}}</a></p>
+        <nav class="nav" aria-label="{{nav_aria}}">
+          <ul>
+            {{nav_items}}
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <ul class="social" aria-label="{{social_aria}}">
+          {{social_links}}
+        </ul>
+      </div>
+    </header>
+
+    <!-- ============ 右侧滚动正文 ============ -->
+    <main class="content">
+      {{news_block}}{{about_block}}{{research_block}}{{publications_block}}{{projects_block}}{{experience_block}}{{teaching_block}}{{contact_block}}
+      <footer class="footer">
+        <p>{{footer_text}}</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="{{prefix}}ascii-ocean.js" defer></script>
+  <script src="{{prefix}}main.js" defer></script>
+</body>
+</html>

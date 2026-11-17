@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "prepared_at": "2026-11-17",
+  "note": "首版结构化内容。所有对外发布前需本人确认；缺失值为 null，建站时不渲染空入口。",
+  "person": {
+    "name_zh": "余洋",
+    "name_en": "Yang Yu",
+    "title_zh": "副教授",
+    "title_en": "Associate Professor",
+    "supervisor_zh": "硕士生导师",
+    "supervisor_en": "Master's Supervisor",
+    "affiliation_zh": "安徽理工大学计算机科学与工程学院",
+    "affiliation_en": "School of Computer Science and Engineering, Anhui University of Science and Technology",
+    "university_zh": "安徽理工大学",
+    "university_en": "Anhui University of Science and Technology",
+    "college_url": "https://jsj.aust.edu.cn/",
+    "college_name_zh": "计算机科学与工程学院",
+    "college_name_en": "School of Computer Science and Engineering",
+    "email": "yuyang@aust.edu.cn",
+    "office_zh": "计算机科学与工程学院B501",
+    "address_zh": "安徽省淮南市泰丰大街168号 安徽理工大学计算机科学与工程学院",
+    "postcode_zh": "232001",
+    "portrait": "portrait.jpg",
+    "portrait_note": "职业照片已由本人提供（assets/portrait/portrait.jpg）。如需更换，替换该文件后重新构建。",
+    "links": {
+      "homepage": null,
+      "github": "https://github.com/YangYu-NUAA",
+      "scholar": null,
+      "orcid": null
+    },
+    "tagline_zh": "时间序列分析、时序基础模型、时序智能体与人工智能辅助药物设计。",
+    "tagline_en": "Time series analysis, foundation models, collaborative agents, and AI-assisted drug discovery.",
+    "bio_zh": [
+      "我是余洋，安徽理工大学计算机科学与工程学院副教授、硕士生导师，兼任杭州云象纪智能科技有限公司科技副总。我的研究围绕时间序列分析、时序基础模型与智能体展开，希望让模型和智能体更好地利用数值观测、文本与图像信息，理解动态过程，并完成从数据分析到预测和决策支持的连续任务。我也开展人工智能辅助药物设计研究，探索预训练模型在生物序列分析和药物研发中的应用。",
+      "此前，我在南京航空航天大学获得软件工程博士学位，并在新加坡管理大学进行联合培养。已有研究涉及鲁棒长期预测、扩散式数据增强、外生变量建模和跨域迁移。目前重点推进时序基础模型适配、多模态时态对齐，以及能够协作调用工具、追踪信息来源的时序智能体系统。我也参与大模型开源教程和人工智能实践教学，希望让研究方法更容易被复现和使用。"
+    ],
+    "bio_en": [
+      "I am Yang Yu, an Associate Professor and master's supervisor at the School of Computer Science and Engineering, Anhui University of Science and Technology, and also serve as Deputy General Manager for Science and Technology at 杭州云象纪智能科技有限公司. My research focuses on time series analysis, time series foundation models, and collaborative agents. I study how models and agents can use numerical observations, text, and images to understand temporal processes and support forecasting and decision-making. I also work on AI-assisted drug discovery, exploring pre-trained models for biological sequence analysis and drug development.",
+      "I received my Ph.D. in Software Engineering from Nanjing University of Aeronautics and Astronautics and undertook joint doctoral training at Singapore Management University. My work spans robust forecasting, diffusion-based data augmentation, exogenous information modeling, and cross-domain adaptation. I am currently exploring time series foundation models, multimodal temporal alignment, and collaborative agents for end-to-end time series analysis. I also contribute to open-source learning resources and practical AI education."
+    ],
+    "chips_zh": ["时间序列分析", "时序基础模型", "时序智能体", "人工智能辅助药物设计"],
+    "chips_en": ["Time Series Analysis", "Foundation Models", "Collaborative Agents", "AI-Assisted Drug Discovery"],
+    "recruitment_zh": "欢迎对前沿技术与科学研究感兴趣、愿意投入时间深入探索的本科生和硕士生联系交流。研究方向包括时间序列分析、时序基础模型、时序智能体和人工智能辅助药物设计，也有无人车、无人机等相关应用项目可以参与。希望同学具备良好的编程基础，愿意阅读论文、认真开展实验，并保持主动思考和持续学习。可结合研究进展与个人发展意愿，推荐继续攻读博士学位，或协助对接业界算法岗位实习机会。",
+    "recruitment_en": "I welcome undergraduate and master's students who are curious about emerging technologies and willing to invest time in research. Topics include time series analysis, foundation models, collaborative agents, and AI-assisted drug discovery, with opportunities to participate in applied projects involving unmanned vehicles and aerial systems. Depending on research progress and career goals, I can support applications for doctoral study and help connect students with industry internships in algorithm development.",
+    "collaboration_zh": "欢迎围绕时间序列分析、基础模型、智能体应用、人工智能辅助药物设计及无人系统开展合作，合作形式可包括联合研究、算法开发、软件系统和实践教学资源建设。现兼任杭州云象纪智能科技有限公司科技副总，参与科研方法与产业应用的协同开发。",
+    "collaboration_en": "I welcome collaboration on time series analysis, foundation models, agent applications, AI-assisted drug discovery, and unmanned systems, including joint research, algorithm development, software systems, and practical teaching resources. I also serve as Deputy General Manager for Science and Technology at 杭州云象纪智能科技有限公司, supporting coordination between research methods and industrial applications."
+  },
+  "research": [
+    {
+      "id": "forecasting",
+      "zh": "时间序列分析与预测",
+      "en": "Time Series Analysis and Forecasting",
+      "description_zh": "研究复杂动态过程的长期预测、概率预测、状态识别与跨场景泛化，关注非平稳变化、有限样本和外生因素对预测的影响。已有工作包括 Robformer、DiffAT、居民用电概率预测和 FPSO-Time；正在推进扩散式域适应及全流程时序分析研究。",
+      "description_en": "Long-term and probabilistic forecasting, state identification, and cross-scenario generalization of complex dynamic processes, with attention to non-stationarity, limited samples, and exogenous factors. Work so far includes Robformer, DiffAT, probabilistic residential electricity forecasting, and FPSO-Time; current work advances diffusion-based domain adaptation and full-cycle time series analysis."
+    },
+    {
+      "id": "foundation",
+      "zh": "时序基础模型与多模态学习",
+      "en": "Time Series Foundation Models and Multimodal Learning",
+      "description_zh": "研究预训练模型对时序规律的表征与利用，关注模型适配、外生信息建模和跨任务泛化。结合数值序列、图像和文本之间的时间对应与语义关联，探索通过未来状态预测学习共同表示，为预测任务和智能体信息交换提供基础。当前工作包括外生变量适配、三模态时态对齐与潜表示预测。",
+      "description_en": "How pre-trained models represent and exploit temporal regularity, with attention to model adaptation, exogenous information modeling, and cross-task generalization. By combining temporal correspondence and semantic association among numerical series, images, and text, we explore learning shared representations through future-state prediction, providing a basis for forecasting tasks and agent information exchange. Current work includes exogenous-variable adaptation, tri-modal temporal alignment, and latent representation prediction."
+    },
+    {
+      "id": "agents",
+      "zh": "时序智能体与协同分析",
+      "en": "Collaborative Agents for Time Series Analysis",
+      "description_zh": "研究智能体在数据探索、状态识别、预测建模与决策支持中的协作方式，关注中间结果如何被后续环节使用，以及任务变化后如何调整分析过程。推进全流程分析系统、评测基准、通信机制和执行过程可追溯研究。",
+      "description_en": "How agents collaborate in data exploration, state identification, forecasting modeling, and decision support: how intermediate results are used by later stages, and how the analysis process adapts when tasks change. We advance full-cycle analysis systems, evaluation benchmarks, communication mechanisms, and traceable execution."
+    },
+    {
+      "id": "drug-discovery",
+      "zh": "人工智能辅助药物设计",
+      "en": "AI-Assisted Drug Discovery",
+      "description_zh": "结合预训练模型、生物序列表示与领域知识，开展人工智能辅助药物设计研究。已有工作涉及蛋白质序列的离子通道识别，并推进知识增强与智能体方法在相关科研任务中的应用。该方向可与药学、生物信息团队开展交叉合作。",
+      "description_en": "AI-assisted drug discovery combining pre-trained models, biological sequence representations, and domain knowledge. Work so far includes ion channel identification from protein sequences, with knowledge-enhanced and agent-based methods advancing in related research tasks; this direction welcomes interdisciplinary collaboration with pharmacy and bioinformatics teams."
+    }
+  ],
+  "education": [
+    {
+      "start": "2021.04",
+      "end": "2025.12",
+      "institution_zh": "南京航空航天大学",
+      "institution_en": "Nanjing University of Aeronautics and Astronautics",
+      "degree_zh": "软件工程博士",
+      "degree_en": "Ph.D. in Software Engineering",
+      "advisors_zh": ["马宗民"],
+      "advisors_en": ["Zongmin Ma"]
+    },
+    {
+      "start": "2017.09",
+      "end": "2020.06",
+      "institution_zh": "河海大学",
+      "institution_en": "Hohai University",
+      "degree_zh": "软件工程硕士",
+      "degree_en": "Master's in Software Engineering",
+      "advisors_zh": ["朱跃龙", "万定生"],
+      "advisors_en": ["Yuelong Zhu", "Dingsheng Wan"]
+    },
+    {
+      "start": "2013.09",
+      "end": "2017.07",
+      "institution_zh": "安徽工业大学",
+      "institution_en": "Anhui University of Technology",
+      "degree_zh": "软件工程学士",
+      "degree_en": "Bachelor's in Software Engineering",
+      "advisors_zh": [],
+      "advisors_en": []
+    }
+  ],
+  "experience": [
+    {
+      "start": "2025.12",
+      "end": null,
+      "current": true,
+      "institution_zh": "安徽理工大学",
+      "institution_en": "Anhui University of Science and Technology",
+      "org_zh": "计算机科学与工程学院",
+      "org_en": "School of Computer Science and Engineering",
+      "role_zh": "教学科研工作，现任副教授",
+      "role_en": "Faculty member; current title: Associate Professor"
+    },
+    {
+      "start": null,
+      "end": null,
+      "current": true,
+      "concurrent": true,
+      "institution_zh": "杭州云象纪智能科技有限公司",
+      "institution_en": null,
+      "role_zh": "科技副总",
+      "role_en": "Deputy General Manager for Science and Technology"
+    },
+    {
+      "start": "2024.10",
+      "end": "2025.10",
+      "institution_zh": "新加坡管理大学",
+      "institution_en": "Singapore Management University",
+      "org_zh": "计算与信息系统学院",
+      "org_en": "School of Computing and Information Systems",
+      "role_zh": "联合培养博士研究生",
+      "role_en": "Joint doctoral training",
+      "advisor_zh": "Zhaoxia Wang"
+    }
+  ]
+}
