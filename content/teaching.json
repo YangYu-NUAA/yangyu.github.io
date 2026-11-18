@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "note": "教学与开源教育内容。获奖信息经官方核对后再加入 awards 字段；暂不列出未经核对的竞赛奖项。",
-  "summary_zh": "围绕人工智能和大语言模型开展实践教学资源建设，参与本科生辅导、竞赛训练与研究生科研指导，已协助指导 1 名硕士研究生。",
-  "summary_en": "Practical teaching resources on artificial intelligence and large language models, with undergraduate mentoring, competition training, and graduate research supervision (one master's student assisted to date).",
+  "summary_zh": "围绕人工智能和大语言模型开展实践教学资源建设，参与本科生辅导、竞赛训练与研究生科研指导，已协助指导 1 名硕士研究生；作为 Datawhale 鲸英助教团成员，长期参与开源课程的教学工作。",
+  "summary_en": "Practical teaching resources on artificial intelligence and large language models, with undergraduate mentoring, competition training, and graduate research supervision (one master's student assisted to date). As a member of Datawhale's Jingying Teaching Assistant Team, I also contribute long-term to open-source course teaching.",
   "reform_project": {
     "title_zh": "基于ROCm开源技术的人工智能基础课程教学改革与实践",
     "title_en": "Teaching Reform and Practice of Introductory AI Courses Based on Open-Source ROCm Technology",
@@ -18,6 +18,15 @@
       "role_zh": "参与教程建设与教学资源贡献",
       "role_en": "Contributor to the tutorial and its teaching resources",
       "url": "https://github.com/datawhalechina/self-llm",
+      "org_zh": "Datawhale 开源社区",
+      "org_en": "Datawhale open-source community"
+    },
+    {
+      "name_zh": "鲸英助教团",
+      "name_en": "Jingying Teaching Assistant Team",
+      "role_zh": "成员，长期参与开源课程的教学工作",
+      "role_en": "Member, with long-term contributions to open-source course teaching",
+      "url": "https://github.com/datawhalechina",
       "org_zh": "Datawhale 开源社区",
       "org_en": "Datawhale open-source community"
     }

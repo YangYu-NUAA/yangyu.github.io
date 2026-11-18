@@ -7,11 +7,18 @@
   <meta name="description" content="{{meta_description}}">
   {{meta_tags}}
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>余</text></svg>">
+  <link rel="preload" href="{{prefix}}assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{prefix}}assets/fonts/sentient-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{prefix}}styles.css">
   <script>if ('IntersectionObserver' in window) { document.documentElement.classList.add('js'); }</script>
 </head>
 <body>
   <div class="ascii-ocean" aria-hidden="true"><canvas id="asciiOcean"></canvas></div>
+  <div class="fish-ocean" aria-hidden="true">
+    <div class="fish fish-one"><div class="fish-float"><svg viewBox="0 0 160 80" role="presentation"><g class="fish-tail"><path d="M45 40 L13 13 L21 40 L13 67 Z" fill="currentColor"/></g><path d="M42 40 C60 12 112 12 137 40 C112 68 60 68 42 40 Z" fill="currentColor"/><path d="M79 31 C88 15 101 15 106 31" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".55"/><circle cx="117" cy="32" r="3.2" fill="#e3e5e9"/></svg></div></div>
+    <div class="fish fish-two"><div class="fish-float"><svg viewBox="0 0 160 80" role="presentation"><g class="fish-tail"><path d="M45 40 L13 13 L21 40 L13 67 Z" fill="currentColor"/></g><path d="M42 40 C60 12 112 12 137 40 C112 68 60 68 42 40 Z" fill="currentColor"/><path d="M79 31 C88 15 101 15 106 31" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".55"/><circle cx="117" cy="32" r="3.2" fill="#e3e5e9"/></svg></div></div>
+    <div class="fish fish-three"><div class="fish-float"><svg viewBox="0 0 160 80" role="presentation"><g class="fish-tail"><path d="M45 40 L13 13 L21 40 L13 67 Z" fill="currentColor"/></g><path d="M42 40 C60 12 112 12 137 40 C112 68 60 68 42 40 Z" fill="currentColor"/><path d="M79 31 C88 15 101 15 106 31" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".55"/><circle cx="117" cy="32" r="3.2" fill="#e3e5e9"/></svg></div></div>
+  </div>
   <div class="spotlight" aria-hidden="true"></div>
 
   <div class="layout">

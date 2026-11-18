@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "note": "科研项目与软件分开维护。funded 为主持项目（个人主页展示）；participating 为参与项目（仅列前三项，其余待公开范围确认后再加）。教改项目放在 content/teaching.json。",
+  "note": "科研项目与软件分开维护。funded 为主持项目；participating 为参与项目，按 vertical（纵向）与 applied（横向及工程应用）分组。按本人要求，页面不展示项目编号。教改项目放在 content/teaching.json。",
   "funded": [
     {
       "title_zh": "面向时间序列预测的不规则模态补全、对齐和融合方法研究",
@@ -21,6 +21,7 @@
   ],
   "participating": [
     {
+      "kind": "vertical",
       "title_zh": "中小河流洪水防控与应急管理关键技术研究与示范",
       "title_en": "Key Technologies and Demonstration for Flood Prevention and Emergency Management of Small and Medium Rivers",
       "category_zh": "国家重点研发计划（参与课题三与课题六）",
@@ -29,18 +30,92 @@
       "role_en": "Participant"
     },
     {
+      "kind": "vertical",
       "title_zh": "复杂空管运行场景下不确定时空知识表征与管理关键技术研究",
-      "title_en": "Key Technologies for Uncertainty-Aware Spatio-Temporal Knowledge Representation and Management in Complex Air Traffic Management Scenarios",
+      "title_en": "Uncertain Spatio-Temporal Knowledge Representation and Management in Complex Air Traffic Management Scenarios",
       "category_zh": "国家自然科学基金面上项目",
       "category_en": "NSFC General Program",
       "role_zh": "参与",
       "role_en": "Participant"
     },
     {
+      "kind": "vertical",
       "title_zh": "飞行区异构知识融合和图谱质量增强技术",
       "title_en": "Heterogeneous Knowledge Fusion and Knowledge Graph Quality Enhancement for Airport Maneuvering Areas",
       "category_zh": "国家重点实验室开放基金",
       "category_en": "State Key Laboratory Open Fund",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    },
+    {
+      "kind": "vertical",
+      "title_zh": "低空空管运行场景下时空知识表征与计算关键技术研究",
+      "title_en": "Spatio-Temporal Knowledge Representation and Computing for Low-Altitude Air Traffic Management",
+      "category_zh": "人才引进科研项目",
+      "category_en": "Talent Recruitment Research Project",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    },
+    {
+      "kind": "vertical",
+      "title_zh": "知识图谱中时态信息建模及其查询关键技术研究",
+      "title_en": "Temporal Information Modeling and Query Technologies for Knowledge Graphs",
+      "category_zh": "江苏省自然科学基金项目",
+      "category_en": "Jiangsu Natural Science Foundation Project",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    },
+    {
+      "kind": "applied",
+      "title_zh": "超轻型EVTOL技术开发",
+      "title_en": "Ultralight eVTOL Technology Development",
+      "category_zh": "横向科研项目",
+      "category_en": "Industry-funded Research Project",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    },
+    {
+      "kind": "applied",
+      "title_zh": "无人车上装设备集成开发项目（一期）",
+      "title_en": "Integrated Development of Unmanned Ground Vehicle Mission Equipment (Phase I)",
+      "category_zh": "横向科研项目",
+      "category_en": "Industry-funded Research Project",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    },
+    {
+      "kind": "applied",
+      "title_zh": "智能履带式移动底盘产品联合技术开发",
+      "title_en": "Joint Development of Intelligent Tracked Mobile Chassis Products",
+      "category_zh": "横向科研项目",
+      "category_en": "Industry-funded Research Project",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    },
+    {
+      "kind": "applied",
+      "title_zh": "低空监视无人机系统关键技术开发",
+      "title_en": "Key Technologies for Low-Altitude Surveillance UAV Systems",
+      "category_zh": "横向科研项目",
+      "category_en": "Industry-funded Research Project",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    },
+    {
+      "kind": "applied",
+      "title_zh": "反无人机系统集成关键技术研究",
+      "title_en": "Key Technologies for Counter-UAS System Integration",
+      "category_zh": "横向科研项目",
+      "category_en": "Industry-funded Research Project",
+      "role_zh": "参与",
+      "role_en": "Participant"
+    },
+    {
+      "kind": "applied",
+      "title_zh": "无人机智巡平台设计开发项目",
+      "title_en": "Design and Development of an Intelligent UAV Inspection Platform",
+      "category_zh": "横向科研项目",
+      "category_en": "Industry-funded Research Project",
       "role_zh": "参与",
       "role_en": "Participant"
     }
@@ -52,7 +127,5 @@
       "description_en": "Implementations of the MMD, KL, and JS divergence measures.",
       "url": "https://github.com/YangYu-NUAA/Universal-MMD-KL-JS-divergence"
     }
-  ],
-  "software_note_zh": "DiffAT 与 Robformer 的公开实现见论文条目中的代码链接。",
-  "software_note_en": "Open implementations of DiffAT and Robformer are linked from their publication entries."
+  ]
 }

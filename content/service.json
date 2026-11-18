@@ -3,6 +3,34 @@
   "note": "学术服务信息。完整期刊全称与角色补齐后再增补；不将审稿人身份写成编委。",
   "memberships_zh": ["中国计算机学会（CCF）会员", "Datawhale 开源社区正式成员"],
   "memberships_en": ["Member, China Computer Federation (CCF)", "Official member, Datawhale open-source community"],
+  "recognition": [
+    {
+      "mark": "D",
+      "icon": "assets/logos/datawhale.png",
+      "name": "Datawhale",
+      "role_zh": "正式成员",
+      "role_en": "Official member",
+      "url": "https://github.com/datawhalechina"
+    },
+    {
+      "mark": "CCF",
+      "icon": "assets/logos/ccf.png",
+      "name": "中国计算机学会",
+      "name_en": "China Computer Federation",
+      "role_zh": "会员",
+      "role_en": "Member",
+      "url": "https://www.ccf.org.cn/"
+    },
+    {
+      "mark": "Y",
+      "icon": "assets/logos/ccf.png",
+      "name": "CCF YOCSEF 合肥",
+      "name_en": "CCF YOCSEF Hefei",
+      "role_zh": "委员",
+      "role_en": "Member",
+      "url": "https://www.ccf.org.cn/YOCSEF/Branches/Hefei/"
+    }
+  ],
   "committee": [
     {
       "organization_zh": "CCF YOCSEF 合肥",
@@ -29,8 +57,8 @@
       "url": null
     }
   ],
-  "journal_reviewer_zh": ["Pattern Recognition（模式识别）", "Expert Systems with Applications（专家系统及其应用）", "Knowledge-Based Systems（知识系统）"],
-  "journal_reviewer_en": ["Pattern Recognition", "Expert Systems with Applications", "Knowledge-Based Systems"],
+  "journal_reviewer_zh": ["Pattern Recognition", "Expert Systems with Applications", "Knowledge-Based Systems", "Engineering Applications of Artificial Intelligence (EAAI)", "IEEE Transactions on Automatic Control (TAC)", "IEEE Transactions on Neural Networks and Learning Systems (TNNLS)", "IEEE Transactions on Emerging Topics in Computational Intelligence (TETCI)", "npj Digital Medicine", "Journal of Hydrology: Regional Studies (JHRS)", "Water Resources Management (WRM)", "Scientific Reports"],
+  "journal_reviewer_en": ["Pattern Recognition", "Expert Systems with Applications", "Knowledge-Based Systems", "Engineering Applications of Artificial Intelligence (EAAI)", "IEEE Transactions on Automatic Control (TAC)", "IEEE Transactions on Neural Networks and Learning Systems (TNNLS)", "IEEE Transactions on Emerging Topics in Computational Intelligence (TETCI)", "npj Digital Medicine", "Journal of Hydrology: Regional Studies (JHRS)", "Water Resources Management (WRM)", "Scientific Reports"],
   "conference_reviewer_zh": ["AAAI", "KDD"],
   "conference_reviewer_en": ["AAAI", "KDD"]
 }
