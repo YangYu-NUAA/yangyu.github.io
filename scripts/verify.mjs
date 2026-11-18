@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 
 const zh = readFileSync("dist/index.html", "utf8");
 const en = readFileSync("dist/en/index.html", "utf8");
+const withoutCoFirstMarks = (html) => html.replace(/<sup class="author-star"[^>]*>\*<\/sup>/g, "");
 
 const checks = [
   ["头像为 portrait.jpg", /src="assets\/portrait\/portrait\.jpg"/.test(zh) && /src="\.\.\/assets\/portrait\/portrait\.jpg"/.test(en)],
@@ -11,7 +12,8 @@ const checks = [
   ["鼠标光斑层", zh.includes('class="spotlight"') && en.includes('class="spotlight"')],
   ["ascii-ocean.js 引用", zh.includes("ascii-ocean.js") && en.includes("ascii-ocean.js")],
   ["主持项目卡片 x2", (zh.match(/<article class="proj-card">/g) || []).length === 2 && (en.match(/<article class="proj-card">/g) || []).length === 2],
-  ["无作者身份标注", !/第一作者|共同第一作者|合作作者|First author|Co-first|Co-author|corresponding/.test(zh) && !/第一作者|First author|Co-first|Co-author|corresponding/.test(en)],
+  ["除明确标记的共一星号外无作者身份标注", !/第一作者|共同第一作者|合作作者|First author|Co-first|Co-author|corresponding/.test(withoutCoFirstMarks(zh)) && !/第一作者|First author|Co-first|Co-author|corresponding/.test(withoutCoFirstMarks(en))],
+  ["GPT2-ICC三位共同第一作者上标星号", (zh.match(/<sup class="author-star"/g) || []).length === 3 && (en.match(/<sup class="author-star"/g) || []).length === 3 && /Zihan Zhou<sup class="author-star"/.test(zh) && /<strong>Yang Yu<\/strong><sup class="author-star"/.test(zh) && /Chengji Yang<sup class="author-star"/.test(zh)],
   ["无项目编号", !/2026yjrc009|HX20260706|2018YFC1508100|62176121|SKLATM202104/.test(zh) && !/2026yjrc009|HX20260706|2018YFC1508100|62176121|SKLATM202104/.test(en)],
   ["Datawhale 正式成员", zh.includes("Datawhale 开源社区正式成员") && en.includes("Official member, Datawhale")],
   ["主持/参与身份保留", zh.includes("主持") && zh.includes("参与")],
