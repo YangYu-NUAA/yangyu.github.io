@@ -168,8 +168,15 @@ const renderPublications = (t, num) => {
   let previousYear = null;
   const items = pubs
     .map((p) => {
+      const coFirstAuthors = p.equal_contribution_authors || [];
       const authors = p.authors
-        .map((a) => (a === OWN_NAME ? `<strong>${esc(a)}</strong>` : esc(a)))
+        .map((a) => {
+          const name = a === OWN_NAME ? `<strong>${esc(a)}</strong>` : esc(a);
+          // 仅对数据中明确标记的共同第一作者添加上标星号（当前为 GPT2-ICC 三位共一）
+          return coFirstAuthors.includes(a)
+            ? `${name}<sup class="author-star" title="${currentLang === "zh" ? "共同第一作者" : "Co-first author"}">*</sup>`
+            : name;
+        })
         .join(", ");
       const title = p.url
         ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>`
@@ -406,19 +413,19 @@ const renderContact = (t, num) => {
   return `
       <section id="contact" class="section reveal">
         ${sectionHead(String(num).padStart(2, "0"), "contact", t.sections.contact)}
-        <div class="contact-grid">
+        <div class="contact-layout">
+          <aside class="contact-panel contact-panel-wide">
+            <h3 class="sub-title">${esc(t.contact.info_title)}</h3>
+            <ul class="contact-list">
+              ${contactItems.map((c) => `<li>${c}</li>`).join("\n              ")}
+            </ul>
+          </aside>
           <div class="contact-intro">
             <h3 class="sub-title">${esc(t.contact.recruitment_title)}</h3>
             <p class="section-copy">${esc(currentLang === "zh" ? p.recruitment_zh : p.recruitment_en)}</p>
             <h3 class="sub-title">${esc(t.contact.collaboration_title)}</h3>
             <p class="section-copy">${esc(currentLang === "zh" ? p.collaboration_zh : p.collaboration_en)}</p>
           </div>
-          <aside class="contact-panel">
-            <h3 class="sub-title">${esc(t.contact.info_title)}</h3>
-            <ul class="contact-list">
-              ${contactItems.map((c) => `<li>${c}</li>`).join("\n              ")}
-            </ul>
-          </aside>
         </div>
       </section>`;
 };
