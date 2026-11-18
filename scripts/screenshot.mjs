@@ -109,6 +109,10 @@ const main = async () => {
 
   await send("Page.enable");
   await send("Runtime.enable");
+  // 验收动态效果时统一模拟 no-preference，避免无头浏览器默认 reduced-motion 隐藏动画
+  await send("Emulation.setEmulatedMedia", {
+    features: [{ name: "prefers-reduced-motion", value: "no-preference" }],
+  });
   await send("Emulation.setDeviceMetricsOverride", {
     width,
     height: viewportHeight,

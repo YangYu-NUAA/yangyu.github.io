@@ -82,16 +82,39 @@ const renderNav = (items) =>
     .join("\n            ");
 
 const renderAbout = (t, lang) => {
-  const bio = lang === "zh" ? profile.person.bio_zh : profile.person.bio_en;
+  const bio = lang === "zh" ? profile.person.bio_html_zh || profile.person.bio_zh : profile.person.bio_html_en || profile.person.bio_en;
   const chips = lang === "zh" ? profile.person.chips_zh : profile.person.chips_en;
+  const assetPrefix = lang === "en" ? "../" : "";
+  const recognition = (service.recognition || [])
+    .map((r) => {
+      const name = lang === "en" ? r.name_en || r.name : r.name;
+      const mark = r.icon
+        ? `<span class="recognition-mark recognition-logo" aria-hidden="true"><img src="${assetPrefix}${esc(r.icon)}" alt="" width="24" height="24"></span>`
+        : `<span class="recognition-mark mono" aria-hidden="true">${esc(r.mark)}</span>`;
+      const inner = `${mark}<span class="recognition-copy"><strong>${esc(name)}</strong><span>${esc(langField(r, "role"))}</span></span>`;
+      return r.url
+        ? `<a class="recognition-item" href="${esc(r.url)}" target="_blank" rel="noopener">${inner}</a>`
+        : `<div class="recognition-item">${inner}</div>`;
+    })
+    .join("\n            ");
   return `
       <section id="about" class="section reveal">
         ${sectionHead("01", "about", t.sections.about)}
         <div class="about-body">
-          ${bio.map((p) => `<p>${esc(p)}</p>`).join("\n          ")}
+          ${bio.map((p) => `<p>${p}</p>`).join("\n          ")}
           <ul class="chips" aria-label="${esc(t.about.chips_label)}">
             ${chips.map((c) => `<li>${esc(c)}</li>`).join("\n            ")}
           </ul>
+          ${
+            recognition
+              ? `<div class="recognition">
+            <h3 class="recognition-label mono">${esc(t.about.recognition_label)}</h3>
+            <div class="recognition-list">
+            ${recognition}
+            </div>
+          </div>`
+              : ""
+          }
         </div>
       </section>`;
 };
@@ -117,14 +140,17 @@ const renderNews = (t, num, lang) => {
 const renderResearch = (t, num) => `
       <section id="research" class="section reveal">
         ${sectionHead(String(num).padStart(2, "0"), "research", t.sections.research)}
-        ${profile.research
-          .map(
-            (r) => `<div class="research-item">
-          <h3>${esc(langField(r, "name"))}</h3>
-          <p>${esc(langField(r, "description"))}</p>
-        </div>`
-          )
-          .join("\n        ")}
+        <div class="research-grid">
+          ${profile.research
+            .map(
+              (r, i) => `<article class="research-card">
+            <span class="research-index mono">${String(i + 1).padStart(2, "0")}</span>
+            <h3>${esc(currentLang === "zh" ? r.zh : r.en)}</h3>
+            <p>${esc(langField(r, "description"))}</p>
+          </article>`
+            )
+            .join("\n          ")}
+        </div>
       </section>`;
 
 // 依据当前语言取字段（xx_zh / xx_en）
@@ -135,7 +161,11 @@ const langField = (obj, base) => {
 };
 
 const renderPublications = (t, num) => {
-  const pubs = publications.publications.slice().sort((a, b) => b.year - a.year);
+  // 年份倒序；同一年份内按 order 升序。居民用电论文 ad-tft 的 order=5，位于2025组末尾。
+  const pubs = publications.publications
+    .slice()
+    .sort((a, b) => b.year - a.year || (a.order ?? 999) - (b.order ?? 999));
+  let previousYear = null;
   const items = pubs
     .map((p) => {
       const authors = p.authors
@@ -151,13 +181,17 @@ const renderPublications = (t, num) => {
         p.pdf_url ? `<a href="${esc(p.pdf_url)}" target="_blank" rel="noopener">PDF</a>` : "",
         p.bibtex ? `<a href="${esc(p.bibtex)}" target="_blank" rel="noopener">${esc(t.publications.bibtex_link)}</a>` : "",
       ].filter(Boolean);
+      const yearHead = p.year !== previousYear
+        ? `<li class="pub-year" aria-label="${p.year}"><h3>${p.year}</h3><span></span></li>`
+        : "";
+      previousYear = p.year;
       // 按本人要求：页面不展示第一作者/共同第一作者等身份标注，author_role 仅保留在数据中备查
-      return `<li class="pub-item">
+      return `${yearHead}<li class="pub-item">
             <p class="pub-title">${title}</p>
             <p class="pub-authors">${authors}</p>
-            <p class="pub-meta"><span>${esc(venue)},</span><span>${p.year},</span>${p.volume_pages ? `<span>${esc(p.volume_pages)}</span>` : ""}</p>
-            ${links.length ? `<p class="pub-links">${links.join("\n              ")}</p>` : ""}
+            <p class="pub-meta"><span>${esc(venue)}</span>${p.volume_pages ? `<span>· ${esc(p.volume_pages)}</span>` : ""}</p>
             ${langField(p, "summary") ? `<p class="pub-summary">${esc(langField(p, "summary"))}</p>` : ""}
+            ${links.length ? `<p class="pub-links">${links.join("\n              ")}</p>` : ""}
           </li>`;
     })
     .join("\n          ");
@@ -177,7 +211,16 @@ const projItem = (p, numberLabel) => `
             <p class="proj-meta"><span>${esc(langField(p, "category"))}</span> · <span class="proj-role">${esc(langField(p, "role"))}</span></p>
           </li>`;
 
-const renderProjects = (t, num) => `
+const renderProjects = (t, num) => {
+  const vertical = (projects.participating || []).filter((p) => p.kind !== "applied");
+  const applied = (projects.participating || []).filter((p) => p.kind === "applied");
+  const renderGroup = (items, title) => items.length
+    ? `<h3 class="sub-title">${esc(title)}</h3>
+        <ul class="proj-list">
+          ${items.map((p) => projItem(p, t.projects.number_label)).join("\n          ")}
+        </ul>`
+    : "";
+  return `
       <section id="projects" class="section reveal">
         ${sectionHead(String(num).padStart(2, "0"), "projects", t.sections.projects)}
         <h3 class="sub-title">${esc(t.projects.funded_title)}</h3>
@@ -186,22 +229,16 @@ const renderProjects = (t, num) => `
             .map(
               (p) => `<li>
             <article class="proj-card">
-              <div class="proj-top"><span class="proj-folder mono">&gt;_</span></div>
+              <div class="proj-top"><span class="proj-folder mono">&gt;_</span><span class="proj-arrow" aria-hidden="true">↗</span></div>
               <h3>${esc(langField(p, "title"))}</h3>
-              <p>${esc(langField(p, "category"))} · ${esc(langField(p, "role"))}</p>
+              <div class="proj-card-meta"><span>${esc(langField(p, "category"))}</span><span class="proj-role">${esc(langField(p, "role"))}</span></div>
             </article>
           </li>`
             )
             .join("\n          ")}
         </ul>
-        ${
-          projects.participating && projects.participating.length
-            ? `<h3 class="sub-title">${esc(t.projects.participating_title)}</h3>
-        <ul class="proj-list">
-          ${projects.participating.map((p) => projItem(p, t.projects.number_label)).join("\n          ")}
-        </ul>`
-            : ""
-        }
+        ${renderGroup(vertical, t.projects.participating_vertical_title || t.projects.participating_title)}
+        ${renderGroup(applied, t.projects.participating_applied_title || t.projects.participating_title)}
         ${
           projects.software && projects.software.length
             ? `<h3 class="sub-title">${esc(t.projects.software_title)}</h3>
@@ -212,43 +249,48 @@ const renderProjects = (t, num) => `
                 `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a> — ${esc(langField(s, "description"))}</li>`
             )
             .join("\n          ")}
-        </ul>
-        <p class="sec-note">${esc(langField(projects, "software_note"))}</p>`
+        </ul>`
             : ""
         }
       </section>`;
+};
 
 const periodText = (e, t) => {
+  const custom = currentLang === "zh" ? e.period_zh : e.period_en;
+  if (custom) return custom;
   if (e.start && e.end) return `${e.start} — ${e.end}`;
   if (e.start && (e.current || !e.end)) return `${e.start} — ${t.experience.present}`;
   return t.experience.current;
 };
 
 const renderExperience = (t, num) => {
-  const xpItems = profile.experience
-    .map(
-      (e) => `<li class="xp-item">
+  const labelSep = currentLang === "zh" ? "：" : ": ";
+  const renderXpItem = (e) => `<li class="xp-item">
             <p class="xp-period mono">${esc(periodText(e, t))}</p>
             <div class="xp-body">
               <h3>${esc(langField(e, "institution"))}${e.org_zh || e.org_en ? ` <span class="xp-org">· ${esc(langField(e, "org"))}</span>` : ""}</h3>
-              <p class="xp-role">${esc(langField(e, "role"))}</p>
-              ${e.advisor_zh ? `<p class="xp-advisor">${esc(t.experience.advisor_label)}：${esc(e.advisor_zh)}</p>` : ""}
+              <ul class="xp-points">
+                <li>${esc(langField(e, "role"))}</li>
+                ${e.advisor_zh ? `<li>${esc(t.experience.advisor_label)}${labelSep}${esc(e.advisor_zh)}</li>` : ""}
+              </ul>
             </div>
-          </li>`
-    )
-    .join("\n          ");
+          </li>`;
+  const xpItems = profile.experience.filter((e) => e.kind !== "internship").map(renderXpItem).join("\n          ");
+  const internshipItems = profile.experience.filter((e) => e.kind === "internship").map(renderXpItem).join("\n          ");
   const eduItems = profile.education
     .map(
       (ed) => `<li class="xp-item">
             <p class="xp-period mono">${esc(ed.start)} — ${esc(ed.end)}</p>
             <div class="xp-body">
               <h3>${esc(langField(ed, "institution"))}</h3>
-              <p class="xp-role">${esc(langField(ed, "degree"))}</p>
-              ${
-                (ed.advisors_zh || []).length
-                  ? `<p class="xp-advisor">${esc(t.experience.advisor_label)}：${esc((currentLang === "zh" ? ed.advisors_zh : ed.advisors_en).join(currentLang === "zh" ? "、" : ", "))}</p>`
-                  : ""
-              }
+              <ul class="xp-points">
+                <li>${esc(langField(ed, "degree"))}</li>
+                ${
+                  (ed.advisors_zh || []).length
+                    ? `<li>${esc(t.experience.advisor_label)}${labelSep}${esc((currentLang === "zh" ? ed.advisors_zh : ed.advisors_en).join(currentLang === "zh" ? "、" : ", "))}</li>`
+                    : ""
+                }
+              </ul>
             </div>
           </li>`
     )
@@ -256,8 +298,20 @@ const renderExperience = (t, num) => {
   return `
       <section id="experience" class="section reveal">
         ${sectionHead(String(num).padStart(2, "0"), "experience", t.sections.experience)}
+        <h3 class="sub-title">${esc(t.experience.work_title)}</h3>
         <ol class="xp-list">
           ${xpItems}
+        </ol>
+        ${
+          internshipItems
+            ? `<h3 class="sub-title experience-sub">${esc(t.experience.internship_title)}</h3>
+        <ol class="xp-list">
+          ${internshipItems}
+        </ol>`
+            : ""
+        }
+        <h3 class="sub-title experience-sub">${esc(t.experience.education_title)}</h3>
+        <ol class="xp-list">
           ${eduItems}
         </ol>
       </section>`;
@@ -267,6 +321,7 @@ const renderTeaching = (t, num) => {
   const li = (s) => `<li>${s}</li>`;
   const pick = (a, b) => (currentLang === "zh" ? a : b);
   const sep = currentLang === "zh" ? "、" : ", ";
+  const labelSep = currentLang === "zh" ? "：" : ": ";
 
   const items = [];
   (pick(service.memberships_zh, service.memberships_en) || []).forEach((m) => items.push(li(esc(m))));
@@ -275,59 +330,67 @@ const renderTeaching = (t, num) => {
   });
   (service.workshops || []).forEach((w) => {
     const topic = langField(w, "topic");
-    const topicText = topic ? "：" + esc(topic) : "";
+    const topicText = topic ? labelSep + esc(topic) : "";
     items.push(li(`${esc(w.conference)} · ${esc(langField(w, "role"))}${topicText}`));
   });
   const journals = pick(service.journal_reviewer_zh, service.journal_reviewer_en) || [];
-  if (journals.length) {
-    items.push(li(`${esc(t.teaching.reviewer_journal)}：${esc(journals.join(sep))}`));
-  }
   const conferences = pick(service.conference_reviewer_zh, service.conference_reviewer_en) || [];
-  if (conferences.length) {
-    items.push(li(`${esc(t.teaching.reviewer_conference)}：${esc(conferences.join(sep))}`));
-  }
   const serviceItems = items.join("\n            ");
 
   const reform = teaching.reform_project;
   const oss = (teaching.open_source || [])
-    .map(
-      (o) =>
-        li(
-          `${esc(langField(o, "org"))}：${esc(o.name)} — ${esc(langField(o, "role"))}` +
-            (o.url ? `（<a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.url)}</a>）` : "")
-        )
-    )
+    .map((o) => {
+      const name = o.name_zh ? langField(o, "name") : o.name;
+      const link = o.url
+        ? (currentLang === "zh" ? `（<a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.url)}</a>）` : ` (<a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.url)}</a>)`)
+        : "";
+      return li(`${esc(langField(o, "org"))}${labelSep}${esc(name)} — ${esc(langField(o, "role"))}${link}`);
+    })
     .join("\n            ");
 
   return `
       <section id="teaching" class="section reveal">
         ${sectionHead(String(num).padStart(2, "0"), "teaching", t.sections.teaching)}
-        <h3 class="sub-title">${esc(t.teaching.title)}</h3>
-        <p class="xp-role">${esc(langField(teaching, "summary"))}</p>
-        ${
-          reform
-            ? `<h3 class="sub-title">${esc(t.teaching.reform_title)}</h3>
-        <ul class="plain-list">
-          ${li(`${esc(langField(reform, "title"))}（${esc(langField(reform, "category"))}，${esc(langField(reform, "role"))}${reform.number ? `，${esc(t.projects.number_label)} ${esc(reform.number)}` : ""}）`)}
-        </ul>`
-            : ""
-        }
-        ${
-          oss
-            ? `<h3 class="sub-title">${esc(t.teaching.open_source_title)}</h3>
-        <ul class="plain-list">
-          ${oss}
-        </ul>`
-            : ""
-        }
-        ${
-          serviceItems
-            ? `<h3 class="sub-title">${esc(t.teaching.service_title)}</h3>
-        <ul class="plain-list">
-            ${serviceItems}
-        </ul>`
-            : ""
-        }
+        <div class="teaching-stack">
+          <div class="teaching-block">
+            <h3 class="sub-title">${esc(t.teaching.title)}</h3>
+            <p class="section-copy">${esc(langField(teaching, "summary"))}</p>
+            ${
+              reform
+                ? `<h4 class="minor-title">${esc(t.teaching.reform_title)}</h4>
+            <ul class="plain-list">
+              ${li(`${esc(langField(reform, "title"))}（${esc(langField(reform, "category"))}，${esc(langField(reform, "role"))}${reform.number ? `，${esc(t.projects.number_label)} ${esc(reform.number)}` : ""}）`)}
+            </ul>`
+                : ""
+            }
+            ${
+              oss
+                ? `<h4 class="minor-title">${esc(t.teaching.open_source_title)}</h4>
+            <ul class="plain-list">
+              ${oss}
+            </ul>`
+                : ""
+            }
+          </div>
+          ${
+            serviceItems
+              ? `<div class="service-block">
+            <h3 class="sub-title">${esc(t.teaching.service_title)}</h3>
+            <ul class="plain-list">
+                ${serviceItems}
+            </ul>
+            ${
+              journals.length || conferences.length
+                ? `<div class="review-copy">
+              <p><strong>${esc(t.teaching.reviewer_journal)}${labelSep}</strong>${esc(journals.join(sep))}${currentLang === "zh" ? "等。" : ", etc."}</p>
+              <p><strong>${esc(t.teaching.reviewer_conference)}${labelSep}</strong>${esc(conferences.join(sep))}${currentLang === "zh" ? "等。" : ", etc."}</p>
+            </div>`
+                : ""
+            }
+          </div>`
+              : ""
+          }
+        </div>
       </section>`;
 };
 
@@ -335,22 +398,28 @@ const renderContact = (t, num) => {
   const p = profile.person;
   const contactItems = [
     `<span class="contact-label">${esc(t.contact.email_label)}</span><span class="contact-value"><a href="mailto:${esc(p.email)}">${esc(p.email)}</a></span>`,
-    p.office_zh ? `<span class="contact-label">${esc(t.contact.office_label)}</span><span class="contact-value">${esc(p.office_zh)}</span>` : "",
-    p.address_zh ? `<span class="contact-label">${esc(t.contact.address_label)}</span><span class="contact-value">${esc(p.address_zh)}${p.postcode_zh ? `（${esc(p.postcode_zh)}）` : ""}</span>` : "",
+    (p.office_zh || p.office_en) ? `<span class="contact-label">${esc(t.contact.office_label)}</span><span class="contact-value">${esc(currentLang === "en" ? p.office_en || p.office_zh : p.office_zh)}</span>` : "",
+    (p.address_zh || p.address_en) ? `<span class="contact-label">${esc(t.contact.address_label)}</span><span class="contact-value">${esc(currentLang === "en" ? p.address_en || p.address_zh : p.address_zh)}${p.postcode_zh ? `（${esc(p.postcode_zh)}）` : ""}</span>` : "",
     p.links.github ? `<span class="contact-label">${esc(t.contact.github_label)}</span><span class="contact-value"><a href="${esc(p.links.github)}" target="_blank" rel="noopener">${esc(p.links.github)}</a></span>` : "",
     p.college_url ? `<span class="contact-label">${esc(t.contact.college_label)}</span><span class="contact-value"><a href="${esc(p.college_url)}" target="_blank" rel="noopener">${esc(p.college_url)}</a></span>` : "",
   ].filter(Boolean);
   return `
       <section id="contact" class="section reveal">
         ${sectionHead(String(num).padStart(2, "0"), "contact", t.sections.contact)}
-        <h3 class="sub-title">${esc(t.contact.recruitment_title)}</h3>
-        <p class="xp-role">${esc(currentLang === "zh" ? p.recruitment_zh : p.recruitment_en)}</p>
-        <h3 class="sub-title">${esc(t.contact.collaboration_title)}</h3>
-        <p class="xp-role">${esc(currentLang === "zh" ? p.collaboration_zh : p.collaboration_en)}</p>
-        <h3 class="sub-title">${esc(t.contact.info_title)}</h3>
-        <ul class="contact-list">
-          ${contactItems.map((c) => `<li>${c}</li>`).join("\n          ")}
-        </ul>
+        <div class="contact-grid">
+          <div class="contact-intro">
+            <h3 class="sub-title">${esc(t.contact.recruitment_title)}</h3>
+            <p class="section-copy">${esc(currentLang === "zh" ? p.recruitment_zh : p.recruitment_en)}</p>
+            <h3 class="sub-title">${esc(t.contact.collaboration_title)}</h3>
+            <p class="section-copy">${esc(currentLang === "zh" ? p.collaboration_zh : p.collaboration_en)}</p>
+          </div>
+          <aside class="contact-panel">
+            <h3 class="sub-title">${esc(t.contact.info_title)}</h3>
+            <ul class="contact-list">
+              ${contactItems.map((c) => `<li>${c}</li>`).join("\n              ")}
+            </ul>
+          </aside>
+        </div>
       </section>`;
 };
 
@@ -412,7 +481,7 @@ const buildPage = (lang) => {
   blocks.push(renderContact(t, n));
 
   const nameMain = lang === "zh" ? p.name_zh : p.name_en;
-  const nameSub = lang === "zh" ? p.name_en : p.name_zh;
+  const nameSub = lang === "zh" ? p.name_en : `(${p.name_zh})`;
 
   const metaTags = [
     `<meta property="og:type" content="website">`,

@@ -1,9 +1,9 @@
 {
-  "doc_title": "Yang Yu 余洋 — Anhui University of Science and Technology",
-  "meta_description": "Yang Yu, Associate Professor and Master's Supervisor at the School of Computer Science and Engineering, Anhui University of Science and Technology. Research: time series analysis, foundation models, collaborative agents, and AI-assisted drug discovery.",
-  "eyebrow": "Anhui University of Science and Technology · School of Computer Science and Engineering",
-  "role_line": "Associate Professor · Master's Supervisor",
-  "tagline": "Time series analysis, foundation models, collaborative agents, and AI-assisted drug discovery.",
+  "doc_title": "Yang Yu (余洋) — Anhui University of Science and Technology",
+  "meta_description": "Yang Yu, Specially Appointed Associate Professor and Master's Supervisor at the School of Computer Science and Engineering, Anhui University of Science and Technology. Research: time series analysis, time series multi-agent systems, foundation models, and AI-assisted drug discovery.",
+  "eyebrow": "AUST · School of Computer Science and Engineering",
+  "role_line": "Specially Appointed Associate Professor · Master's Supervisor",
+  "tagline": "Time series analysis, time series multi-agent systems, foundation models, and AI-assisted drug discovery.",
   "lang_self_label": "EN",
   "lang_other_label": "中文",
   "lang_other_href": "../",
@@ -32,7 +32,8 @@
     "contact": "Students & Contact"
   },
   "about": {
-    "chips_label": "Research interests"
+    "chips_label": "Research interests",
+    "recognition_label": "Community & Academic Service"
   },
   "publications": {
     "paper_link": "Paper",
@@ -44,19 +45,25 @@
   "projects": {
     "funded_title": "Research Projects (PI)",
     "participating_title": "Participated Projects",
+    "participating_vertical_title": "Participated Research Programs",
+    "participating_applied_title": "Participated Industry & Engineering Projects",
     "software_title": "Research Software & Open Source",
     "number_label": "No."
   },
   "experience": {
     "present": "Present",
     "current": "Current",
-    "advisor_label": "Advisor"
+    "advisor_label": "Advisor",
+    "work_title": "Work & Joint Training",
+    "internship_title": "Algorithm Internships",
+    "education_title": "Education"
   },
   "teaching": {
     "title": "Teaching",
     "reform_title": "Teaching Reform Project (PI)",
     "open_source_title": "Open-Source Education",
     "service_title": "Academic Service",
+    "reviewer_title": "Peer Review",
     "reviewer_journal": "Journal Reviewer",
     "reviewer_conference": "Conference Reviewer"
   },
@@ -71,6 +78,6 @@
     "college_label": "College Website",
     "college_page_label": "College Faculty Page"
   },
-  "footer": "© 2026 Yang Yu · School of Computer Science and Engineering, Anhui University of Science and Technology · Static page, no tracking scripts",
+  "footer": "© 2026 Yang Yu · School of Computer Science and Engineering, Anhui University of Science and Technology",
   "portrait_alt": "Yang Yu"
 }

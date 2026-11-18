@@ -4,6 +4,7 @@
   "publications": [
     {
       "id": "fpso-time",
+      "order": 1,
       "title": "FPSO-Time: A Fuzzy Time Series Forecasting Method Based on Fuzzy Particle Swarm Optimization and Reprogrammed Large Language Models",
       "authors": ["Wenbo Gu", "Ruizhe Ma", "Yang Yu", "Zongmin Ma"],
       "author_role_zh": "合作作者",
@@ -23,6 +24,7 @@
     },
     {
       "id": "diffat",
+      "order": 2,
       "title": "DiffAT: Effective data augmentation with diffusion models for time series forecasting",
       "authors": ["Yang Yu", "Ruizhe Ma", "Wenbo Gu", "Zongmin Ma"],
       "author_role_zh": "第一作者",
@@ -42,6 +44,7 @@
     },
     {
       "id": "gpt2-icc",
+      "order": 3,
       "title": "GPT2-ICC: A data-driven approach for accurate ion channel identification using pre-trained large language models",
       "authors": ["Zihan Zhou", "Yang Yu", "Chengji Yang", "Leyan Cao", "Shaoying Zhang", "Junnan Li", "Yingnan Zhang", "Huayun Han", "Guoliang Shi", "Qiansen Zhang", "Juwen Shen", "Huaiyu Yang"],
       "author_role_zh": "共同第一作者",
@@ -62,6 +65,7 @@
     },
     {
       "id": "ad-tft",
+      "order": 5,
       "title": "Probabilistic Forecasting of Residential Electricity Consumption Based on Adaptive Decomposition Temporal Fusion Transformer",
       "authors": ["Yang Yu", "Guoliang Shi"],
       "author_role_zh": "第一作者、通讯作者",
@@ -81,6 +85,7 @@
     },
     {
       "id": "equipment-kg",
+      "order": 4,
       "title": "LLM-Based Automatic Construction Method of Equipment Fault Knowledge Graph",
       "authors": ["Yang Yu", "Xiaowen Zhang"],
       "author_role_zh": "第一作者",
@@ -100,6 +105,7 @@
     },
     {
       "id": "robformer",
+      "order": 1,
       "title": "Robformer: A robust decomposition transformer for long-term time series forecasting",
       "authors": ["Yang Yu", "Ruizhe Ma", "Zongmin Ma"],
       "author_role_zh": "第一作者",
