@@ -123,5 +123,79 @@
       "summary_zh": "通过鲁棒分解和时态建模改善非平稳序列的长期预测。",
       "summary_en": "Robust decomposition and temporal modeling improve long-term forecasting of non-stationary series."
     }
+  ],
+  "under_review_note_zh": "在审工作（截至 2026 年 11 月，按投稿目标期刊排序）",
+  "under_review_note_en": "Under Review (as of November 2026)",
+  "under_review": [
+    {
+      "id": "llmts-exo",
+      "order": 1,
+      "title": "LLMTS-EXO: Cross-Channel Exogenous Attention for Time Series Forecasting with Pretrained Language Models",
+      "authors": ["Yang Yu"],
+      "venue_zh": "Pattern Recognition",
+      "venue_en": "Pattern Recognition",
+      "year": 2026,
+      "status": "under_review",
+      "status_zh": "返修",
+      "status_en": "Revision",
+      "summary_zh": "利用预训练语言建模历史与已知未来外生信息，开展跨通道外生注意力时序预测。",
+      "summary_en": "Cross-channel exogenous attention over historical and known-future exogenous information with pretrained language models."
+    },
+    {
+      "id": "full-cycle-tsa",
+      "order": 2,
+      "title": "Beyond Isolated Tasks: Benchmarking and Automating Full-Cycle Time Series Analysis",
+      "authors": ["Yang Yu"],
+      "venue_zh": "ICLR 2027",
+      "venue_en": "ICLR 2027",
+      "year": 2027,
+      "status": "under_review",
+      "status_zh": "在投",
+      "status_en": "Submission",
+      "summary_zh": "提出面向数据探索、状态识别、预测组织与决策支持依赖关系的评测基准，并实现全流程时序分析自动化。",
+      "summary_en": "Benchmarks and automates dependencies among data exploration, state identification, forecast organization, and decision support."
+    },
+    {
+      "id": "lgsra",
+      "order": 3,
+      "title": "LLM-Guided Semantic Relation Augmentation for Few-Shot Knowledge Graph Completion",
+      "authors": ["Yang Yu"],
+      "venue_zh": "Journal of King Saud University – Computer and Information Sciences",
+      "venue_en": "Journal of King Saud University – Computer and Information Sciences",
+      "year": 2026,
+      "status": "under_review",
+      "status_zh": "返修二审",
+      "status_en": "Second Revision",
+      "summary_zh": "以大模型引导的语义关系增强方法开展少样本知识图谱补全。",
+      "summary_en": "LLM-guided semantic relation augmentation for few-shot knowledge graph completion."
+    },
+    {
+      "id": "adarmd",
+      "order": 4,
+      "title": "Learning to Align Temporal Dynamics: Diffusion-Based Domain Adaptation for Time Series Forecasting",
+      "authors": ["Yang Yu"],
+      "venue_zh": "Information Sciences",
+      "venue_en": "Information Sciences",
+      "year": 2026,
+      "status": "under_review",
+      "status_zh": "返修",
+      "status_en": "Revision",
+      "summary_zh": "通过扩散式域适应实现跨场景时态模式迁移，用于时间序列预测。",
+      "summary_en": "Diffusion-based domain adaptation that transfers temporal dynamics across domains for forecasting."
+    },
+    {
+      "id": "tidal-water",
+      "order": 5,
+      "title": "Physics-Guided and Boundary-Driven Coupled Modeling for Water Level Forecasting in Tidal Rivers",
+      "authors": ["Yang Yu"],
+      "venue_zh": "Journal of Hydrology: Regional Studies",
+      "venue_en": "Journal of Hydrology: Regional Studies",
+      "year": 2026,
+      "status": "under_review",
+      "status_zh": "返修二审",
+      "status_en": "Second Revision",
+      "summary_zh": "以物理引导与边界驱动耦合建模开展感潮河流水位预报。",
+      "summary_en": "Physics-guided and boundary-driven coupled modeling for water level forecasting in tidal rivers."
+    }
   ]
 }

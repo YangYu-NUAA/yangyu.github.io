@@ -178,17 +178,22 @@ a.recognition-item:hover strong, a.recognition-item:hover span { color: var(--ac
 .pub-year:first-child { margin-top: 0; }
 .pub-year h3 { font-family: var(--serif); font-size: 1.42rem; font-weight: 500; font-style: italic; line-height: 1; color: var(--ink); }
 .pub-year > span { flex: 1; height: 1px; background: var(--hairline); }
-.pub-item { padding: 1.15rem 0 1.2rem; border-top: 1px solid var(--hairline); }
+.pub-group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.85rem; margin: 2.4rem 0 0.4rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
+.pub-group h3 { font-family: var(--serif); font-size: 1.42rem; font-weight: 500; font-style: italic; line-height: 1.1; color: var(--ink); }
+.pub-group > span { font-size: 0.8rem; color: var(--ink-faint); }
+/* 论文列表：适度压缩行距，控制条目增多后的整体长度 */
+.pub-item { padding: 0.9rem 0 0.95rem; border-top: 1px solid var(--hairline); }
 .pub-year + .pub-item { border-top: none; }
-.pub-title { font-size: 1.01rem; font-weight: 600; line-height: 1.55; overflow-wrap: break-word; }
+.pub-title { font-size: 1rem; font-weight: 600; line-height: 1.5; overflow-wrap: break-word; }
 .pub-title a { color: var(--ink); border: none; }
 .pub-title a:hover { color: var(--accent); border-bottom: 1px solid currentColor; }
-.pub-authors { margin-top: 0.3rem; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; overflow-wrap: break-word; }
+.pub-authors { margin-top: 0.24rem; font-size: 0.87rem; color: var(--ink-soft); line-height: 1.5; overflow-wrap: break-word; }
 .pub-authors strong { color: var(--ink); font-weight: 700; }
 .author-star { color: var(--accent); font-size: 0.76em; font-weight: 700; margin-left: 0.08em; line-height: 0; }
-.pub-meta { margin-top: 0.32rem; font-family: var(--mono); font-size: 0.75rem; line-height: 1.6; color: var(--ink-faint); display: flex; flex-wrap: wrap; gap: 0.2rem 0.5rem; }
-.pub-summary { margin-top: 0.42rem; font-size: 0.86rem; line-height: 1.65; color: var(--ink-faint); max-width: 64ch; }
-.pub-links { margin-top: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+.pub-meta { margin-top: 0.28rem; font-family: var(--mono); font-size: 0.75rem; line-height: 1.5; color: var(--ink-faint); display: flex; flex-wrap: wrap; gap: 0.2rem 0.5rem; }
+.pub-status { color: var(--accent-strong); background: var(--accent-soft); border-radius: 999px; padding: 0.05em 0.5em; font-size: 0.92em; }
+.pub-summary { margin-top: 0.36rem; font-size: 0.86rem; line-height: 1.58; color: var(--ink-faint); max-width: 64ch; }
+.pub-links { margin-top: 0.42rem; display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; }
 .pub-links a { font-family: var(--mono); font-size: 0.73rem; border-bottom: 1px solid rgba(0, 124, 255, 0.32); }
 
 /* ---------- Projects ---------- */

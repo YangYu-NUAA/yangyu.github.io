@@ -40,7 +40,8 @@
     "code_link": "Code",
     "bibtex_link": "BibTeX",
     "role_prefix": "",
-    "selected_note": "Listed in reverse chronological order."
+    "selected_note": "Listed in reverse chronological order.",
+    "under_review_title": "Under Review"
   },
   "projects": {
     "funded_title": "Research Projects (PI)",

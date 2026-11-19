@@ -86,7 +86,7 @@ node scripts/verify.mjs     # 可选：核对构建产物（内容边界与结�
 - 作者列表中的 `Yang Yu` 会自动加粗，不要手动加星号；
 - 页面默认**不展示**第一作者/共同第一作者等身份标注，`author_role_zh` / `author_role_en` 仅保留在数据中备查；按本人后续明确要求，若条目包含 `equal_contribution_authors`，对应作者姓名右上角显示 `*`，当前仅用于 GPT2-ICC 的 Zihan Zhou、Yang Yu、Chengji Yang 三位共同第一作者；
 - `url` / `code_url` / `pdf_url` / `bibtex` 为 `null` 时，页面不渲染对应入口（不会出现无效的「论文」「代码」按钮）；
-- 在投论文经本人确认公开后再加入；预印本可将 `status` 设为 `preprint`，与已发表分开管理。
+- 在投论文经本人确认公开后再加入；`under_review` 数组单独维护“在审工作”（截至日期见 `under_review_note_zh` / `under_review_note_en`），按 `order` 升序排列，用 `status_zh` / `status_en` 标注返修或在投状态，页面不生成论文/代码入口。
 
 ### 增加科研项目
 
