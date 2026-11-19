@@ -40,7 +40,8 @@
     "code_link": "代码",
     "bibtex_link": "BibTeX",
     "role_prefix": "",
-    "selected_note": "以下按发表年份倒序排列。"
+    "selected_note": "以下按发表年份倒序排列。",
+    "under_review_title": "在审工作"
   },
   "projects": {
     "funded_title": "科研项目（主持）",

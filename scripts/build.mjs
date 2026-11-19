@@ -160,54 +160,69 @@ const langField = (obj, base) => {
   return v ?? obj[`${base}_zh`] ?? "";
 };
 
+const renderPubItem = (p, t) => {
+  const coFirstAuthors = p.equal_contribution_authors || [];
+  const authors = p.authors
+    .map((a) => {
+      const name = a === OWN_NAME ? `<strong>${esc(a)}</strong>` : esc(a);
+      // 仅对数据中明确标记的共同第一作者添加上标星号（当前为 GPT2-ICC 三位共一）
+      return coFirstAuthors.includes(a)
+        ? `${name}<sup class="author-star" title="${currentLang === "zh" ? "共同第一作者" : "Co-first author"}">*</sup>`
+        : name;
+    })
+    .join(", ");
+  const title = p.url
+    ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>`
+    : `<span>${esc(p.title)}</span>`;
+  const venue = langField(p, "venue");
+  const status = p.status_zh || p.status_en ? esc(currentLang === "zh" ? p.status_zh : p.status_en) : "";
+  const links = [
+    p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(t.publications.paper_link)}</a>` : "",
+    p.code_url ? `<a href="${esc(p.code_url)}" target="_blank" rel="noopener">${esc(t.publications.code_link)}</a>` : "",
+    p.pdf_url ? `<a href="${esc(p.pdf_url)}" target="_blank" rel="noopener">PDF</a>` : "",
+    p.bibtex ? `<a href="${esc(p.bibtex)}" target="_blank" rel="noopener">${esc(t.publications.bibtex_link)}</a>` : "",
+  ].filter(Boolean);
+  return `<li class="pub-item">
+            <p class="pub-title">${title}</p>
+            <p class="pub-authors">${authors}</p>
+            <p class="pub-meta"><span>${esc(venue)}</span>${p.volume_pages ? `<span>· ${esc(p.volume_pages)}</span>` : ""}${status ? `<span class="pub-status">${status}</span>` : ""}</p>
+            ${langField(p, "summary") ? `<p class="pub-summary">${esc(langField(p, "summary"))}</p>` : ""}
+            ${links.length ? `<p class="pub-links">${links.join("\n              ")}</p>` : ""}
+          </li>`;
+};
+
 const renderPublications = (t, num) => {
-  // 年份倒序；同一年份内按 order 升序。居民用电论文 ad-tft 的 order=5，位于2025组末尾。
+  // 已发表：年份倒序，同一年内按 order 升序（居民用电论文 ad-tft 位于 2025 组末尾）
   const pubs = publications.publications
     .slice()
     .sort((a, b) => b.year - a.year || (a.order ?? 999) - (b.order ?? 999));
   let previousYear = null;
   const items = pubs
     .map((p) => {
-      const coFirstAuthors = p.equal_contribution_authors || [];
-      const authors = p.authors
-        .map((a) => {
-          const name = a === OWN_NAME ? `<strong>${esc(a)}</strong>` : esc(a);
-          // 仅对数据中明确标记的共同第一作者添加上标星号（当前为 GPT2-ICC 三位共一）
-          return coFirstAuthors.includes(a)
-            ? `${name}<sup class="author-star" title="${currentLang === "zh" ? "共同第一作者" : "Co-first author"}">*</sup>`
-            : name;
-        })
-        .join(", ");
-      const title = p.url
-        ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>`
-        : `<span>${esc(p.title)}</span>`;
-      const venue = langField(p, "venue");
-      const links = [
-        p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(t.publications.paper_link)}</a>` : "",
-        p.code_url ? `<a href="${esc(p.code_url)}" target="_blank" rel="noopener">${esc(t.publications.code_link)}</a>` : "",
-        p.pdf_url ? `<a href="${esc(p.pdf_url)}" target="_blank" rel="noopener">PDF</a>` : "",
-        p.bibtex ? `<a href="${esc(p.bibtex)}" target="_blank" rel="noopener">${esc(t.publications.bibtex_link)}</a>` : "",
-      ].filter(Boolean);
       const yearHead = p.year !== previousYear
         ? `<li class="pub-year" aria-label="${p.year}"><h3>${p.year}</h3><span></span></li>`
         : "";
       previousYear = p.year;
-      // 按本人要求：页面不展示第一作者/共同第一作者等身份标注，author_role 仅保留在数据中备查
-      return `${yearHead}<li class="pub-item">
-            <p class="pub-title">${title}</p>
-            <p class="pub-authors">${authors}</p>
-            <p class="pub-meta"><span>${esc(venue)}</span>${p.volume_pages ? `<span>· ${esc(p.volume_pages)}</span>` : ""}</p>
-            ${langField(p, "summary") ? `<p class="pub-summary">${esc(langField(p, "summary"))}</p>` : ""}
-            ${links.length ? `<p class="pub-links">${links.join("\n              ")}</p>` : ""}
-          </li>`;
+      return `${yearHead}${renderPubItem(p, t)}`;
     })
     .join("\n          ");
+
+  // 在审工作：按投稿目标期刊排序（order 升序），仅标题、作者、目标期刊与状态
+  const underReview = (publications.under_review || [])
+    .slice()
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+  const underReviewBlock = underReview.length
+    ? `<li class="pub-group" aria-label="${esc(t.publications.under_review_title)}"><h3>${esc(t.publications.under_review_title)}</h3><span>${esc(currentLang === "zh" ? publications.under_review_note_zh : publications.under_review_note_en)}</span></li>
+        ${underReview.map((p) => renderPubItem(p, t)).join("\n          ")}`
+    : "";
+
   return `
       <section id="publications" class="section reveal">
         ${sectionHead(String(num).padStart(2, "0"), "publications", t.sections.publications)}
         <p class="sec-note">${esc(t.publications.selected_note)}</p>
         <ul class="pub-list">
           ${items}
+          ${underReviewBlock}
         </ul>
       </section>`;
 };
